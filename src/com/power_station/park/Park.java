@@ -51,6 +51,7 @@ public class Park {
 
     /**
      * Return the name of the park.
+     * 
      * @return the name
      */
     public String getName() {
@@ -59,9 +60,18 @@ public class Park {
 
     /**
      * Return a collection of all the parks existing.
+     * 
      * @return collection of all the parks
      */
     public Collection<Park> getParks() {
         return Park.mapParks.values();
+    }
+
+    /**
+     * Return all electricity blocks for this park.
+     * @return all electricity blocks
+     */
+    public List<ElectricityBlock> getElectricityBlocks() {
+        return this.electricityBlocks;
     }
 }
