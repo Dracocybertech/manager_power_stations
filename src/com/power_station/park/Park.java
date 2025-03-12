@@ -47,4 +47,12 @@ public class Park {
     public String getType() {
         return this.type;
     }
+
+    /**
+     * Return the name of the park.
+     * @return the name
+     */
+    public String getName() {
+        return this.name;
+    }
 }
