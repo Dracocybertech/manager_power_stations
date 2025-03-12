@@ -5,7 +5,7 @@ Once you have all your stations, you can make offers as if you were proposing yo
 
 # Installation
 1. Clone the repo 
-```git clone [https://github.com/Dracocybertech/african_tarot.git](https://github.com/Dracocybertech/manager_power_stations.git)```
+```git clone https://github.com/Dracocybertech/manager_power_stations.git```
 2. Install Java latest JDK depending of your OS : https://www.oracle.com/fr/java/technologies/downloads/.
 3. Go to the root of the projet
 ```cd Path/to/the/project/manager_power_stations```
