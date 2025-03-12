@@ -63,7 +63,13 @@ public class ElectricityOffer {
         }
     }
 
+    /**
+     * Remove an electricity block from the offer
+     * 
+     * @param indexBlock
+     */
     public void removeBlock(int indexBlock) {
-        this.electricityBlocks.remove(indexBlock);
+        ElectricityBlock removedBlock = this.electricityBlocks.remove(indexBlock);
+        totalHours -= removedBlock.getHours();
     }
 }
