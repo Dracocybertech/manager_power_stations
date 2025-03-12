@@ -7,7 +7,7 @@ public class ElectricityOffer {
 
     private List<ElectricityBlock> electricityBlocks;
     private int id;
-    private int idCounter = 0;
+    private static int idCounter = 0;
     private int totalHours = 0;
 
     /**
@@ -32,7 +32,8 @@ public class ElectricityOffer {
         if (totalHours > 24) {
             throw new TooManyHoursException("There can't be more than 24 hours with all of the combined hours.");
         }
-        electricityBlocks = new ArrayList<>(electricityBlocks);
+        this.electricityBlocks = new ArrayList<>(electricityBlocks);
+
         this.id = idCounter + 1;
         idCounter += 1;
     }
@@ -44,6 +45,10 @@ public class ElectricityOffer {
      */
     public List<ElectricityBlock> getElectricityBlocks() {
         return this.electricityBlocks;
+    }
+
+    public int getId() {
+        return this.id;
     }
 
     /**
