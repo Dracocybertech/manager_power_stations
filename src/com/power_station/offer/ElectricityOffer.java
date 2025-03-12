@@ -38,6 +38,15 @@ public class ElectricityOffer {
     }
 
     /**
+     * Return the list of electricity blocks.
+     * 
+     * @return List of all {@link ElectricityBlock}
+     */
+    public List<ElectricityBlock> getElecticityBlocks() {
+        return this.electricityBlocks;
+    }
+
+    /**
      * Add a electricity block to the offer, if the offer doesn't exceed 24 hours.
      * 
      * @param electricityBlock
