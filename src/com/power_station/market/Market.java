@@ -43,4 +43,12 @@ public class Market {
         this.offers = new ArrayList<>(offers);
         listmarkets.put(name, this);
     }
+
+    /**
+     * Return the list of electricity offers the market currently has.
+     * @return
+     */
+    public List<ElectricityOffer> getElectricityOffers() {
+        return this.offers;
+    }
 }
