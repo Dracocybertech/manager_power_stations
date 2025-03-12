@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.power_station.offer.ElectricityOffer;
+
 public class Market {
 
     private String name;
@@ -13,6 +15,7 @@ public class Market {
 
     /**
      * Create a Market with a new name.
+     * 
      * @param name
      */
     public Market(String name) {
@@ -27,6 +30,7 @@ public class Market {
 
     /**
      * Create a Market with a new name and offers.
+     * 
      * @param name
      * @param offers
      */
