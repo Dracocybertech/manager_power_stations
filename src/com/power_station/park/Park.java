@@ -87,7 +87,7 @@ public class Park {
      * Return true if at least one block in the park can supply a given block.
      * 
      * @param blockToSupply
-     * @return True if the park can provid for a given block
+     * @return True if the park can provide for a given block
      */
     public boolean supplyElectricityBlock(ElectricityBlock blockToSupply) {
         for (ElectricityBlock electricityBlock : this.electricityBlocks) {
