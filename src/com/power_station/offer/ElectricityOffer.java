@@ -42,7 +42,7 @@ public class ElectricityOffer {
      * 
      * @return List of all {@link ElectricityBlock}
      */
-    public List<ElectricityBlock> getElecticityBlocks() {
+    public List<ElectricityBlock> getElectricityBlocks() {
         return this.electricityBlocks;
     }
 
