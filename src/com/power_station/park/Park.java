@@ -1,6 +1,7 @@
 package com.power_station.park;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -54,5 +55,13 @@ public class Park {
      */
     public String getName() {
         return this.name;
+    }
+
+    /**
+     * Return a collection of all the parks existing.
+     * @return collection of all the parks
+     */
+    public Collection<Park> getParks() {
+        return Park.mapParks.values();
     }
 }
