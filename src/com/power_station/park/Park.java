@@ -13,6 +13,7 @@ public class Park {
     private String name;
     private List<ElectricityBlock> electricityBlocks;
     private static Map<String, Park> mapParks;
+    private int totalHours = 0;
 
     /**
      * Create Park with empty production blocks.
@@ -33,6 +34,12 @@ public class Park {
     public Park(String type, String name, List<ElectricityBlock> electricityBlocks) {
         if (mapParks.containsKey(name)) {
             throw new ParkAlreadyExistingException("Park with this name already exists.");
+        }
+        for (ElectricityBlock block : electricityBlocks) {
+            totalHours += block.getHours();
+        }
+        if (totalHours > 24) {
+            throw new TooManyHoursParkException("Park can't produced over 24 hours of electricity.");
         }
         this.name = name;
         this.type = type;
@@ -69,6 +76,7 @@ public class Park {
 
     /**
      * Return all electricity blocks for this park.
+     * 
      * @return all electricity blocks
      */
     public List<ElectricityBlock> getElectricityBlocks() {
