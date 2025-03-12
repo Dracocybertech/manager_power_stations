@@ -63,4 +63,17 @@ public class ElectricityBlock {
         }
         this.price = price;
     }
+
+    /**
+     * Return true if the current block can provide for another block given that
+     * price can't be lower, hours can't be higher and the energy must be the same.
+     * 
+     * @param blockToSupply
+     * @return True if the current block can supply the provided block
+     */
+    public boolean supplyElectricityBlock(ElectricityBlock blockToSupply) {
+        return blockToSupply.getEnergy() == this.energy
+                && blockToSupply.getHours() <= this.hours
+                && blockToSupply.getPrice() >= this.price;
+    }
 }
