@@ -38,4 +38,13 @@ public class Park {
         this.electricityBlocks = new ArrayList<>(electricityBlocks);
         mapParks.put(name, this);
     }
+
+    /**
+     * Return the type of the park.
+     * 
+     * @return The type of the park
+     */
+    public String getType() {
+        return this.type;
+    }
 }
