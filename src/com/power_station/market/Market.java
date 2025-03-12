@@ -1,6 +1,7 @@
 package com.power_station.market;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,5 +51,13 @@ public class Market {
      */
     public List<ElectricityOffer> getElectricityOffers() {
         return this.offers;
+    }
+
+    /**
+     * Return a Collection of the markets.
+     * @return
+     */
+    public Collection<Market> getMarkets() {
+        return Market.listmarkets.values();
     }
 }
