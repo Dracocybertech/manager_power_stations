@@ -70,7 +70,7 @@ public class Park {
      * 
      * @return collection of all the parks
      */
-    public Collection<Park> getParks() {
+    public static Collection<Park> getParks() {
         return Park.mapParks.values();
     }
 
@@ -81,5 +81,20 @@ public class Park {
      */
     public List<ElectricityBlock> getElectricityBlocks() {
         return this.electricityBlocks;
+    }
+
+    /**
+     * Return true if at least one block in the park can supply a given block.
+     * 
+     * @param blockToSupply
+     * @return True if the park can provid for a given block
+     */
+    public boolean supplyElectricityBlock(ElectricityBlock blockToSupply) {
+        for (ElectricityBlock electricityBlock : this.electricityBlocks) {
+            if (electricityBlock.supplyElectricityBlock(blockToSupply)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
