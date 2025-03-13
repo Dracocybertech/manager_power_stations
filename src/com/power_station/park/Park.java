@@ -87,7 +87,7 @@ public class Park {
     /**
      * Remove all parks created.
      */
-    public void clearParks() {
+    public static void clearParks() {
         Park.mapParks.clear();
     }
 
