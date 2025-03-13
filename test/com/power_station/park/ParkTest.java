@@ -19,14 +19,15 @@ public class ParkTest {
     @Before
     public void beforeTest() {
         System.out.println("Park test starting");
-        emptyPark = new Park("Primaire", "Empty Park");
+        String type = "Primaire";
+        emptyPark = new Park(type, "Empty Park");
         int energy = 10;
         int price = 20;
         int hours = 3;
         electricityBlock = new ElectricityBlock(energy, price, hours);
         listElectricityBlocks = new ArrayList<>();
         listElectricityBlocks.add(electricityBlock);
-        park = new Park("Primaire", "Park 1", listElectricityBlocks);
+        park = new Park(type, "Park 1", listElectricityBlocks);
     }
 
     @Test
