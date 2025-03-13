@@ -13,7 +13,7 @@ import com.power_station.park.Park;
 public class Market {
 
     private String name;
-    private ElectricityOffer offer;
+    private List<ElectricityOffer> offers;
     private static Map<String, Market> mapMarkets = new HashMap<>();
 
     /**
@@ -27,7 +27,7 @@ public class Market {
                     "The market with this name already exist. Please use another name.");
         }
         this.name = name;
-        this.offer = null;
+        this.offers = new ArrayList<>();
         mapMarkets.put(name, this);
     }
 
@@ -37,13 +37,13 @@ public class Market {
      * @param name
      * @param offers
      */
-    public Market(String name, ElectricityOffer offer) {
+    public Market(String name, List<ElectricityOffer> offers) {
         if (mapMarkets.containsKey(name)) {
             throw new MarketAlreadyExistingException(
                     "The market with this name already exist. Please use another name.");
         }
         this.name = name;
-        this.offer = offer;
+        this.offers = new ArrayList<>(offers);
         mapMarkets.put(name, this);
     }
 
@@ -52,8 +52,8 @@ public class Market {
      * 
      * @return
      */
-    public ElectricityOffer getElectricityOffer() {
-        return this.offer;
+    public List<ElectricityOffer> getElectricityOffers() {
+        return this.offers;
     }
 
     /**
@@ -82,14 +82,16 @@ public class Market {
      * @return
      */
     public List<Park> getListParkOffer() {
+        // Get the list of all the parks
         ArrayList<Park> listParksResult = new ArrayList<>();
         List<Park> listParks = new ArrayList<>(Park.getParks());
-        if (this.getElectricityOffer() == null || listParks.isEmpty()) {
+
+        if (this.getElectricityOffers().isEmpty() || listParks.isEmpty()) {
             return listParksResult;
         }
 
         // Get all the electricity blocks we need to supply for this offer
-        List<ElectricityBlock> offerBlocks = this.getElectricityOffer().getElectricityBlocks();
+        List<ElectricityBlock> offerBlocks = this.getElectricityOffers().get(0).getElectricityBlocks();
 
         // For each electricity block, we see if there is a park which can supply it
         for (ElectricityBlock block : offerBlocks) {

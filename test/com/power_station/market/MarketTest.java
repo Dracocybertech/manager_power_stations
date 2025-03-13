@@ -16,6 +16,7 @@ public class MarketTest {
     private Market emptyMarket;
     private Market market;
     private ElectricityOffer electricityOffer;
+    private ArrayList<ElectricityOffer> listElectricityOffers;
     private ArrayList<ElectricityBlock> listElectricityBlocks;
 
     @Before
@@ -29,7 +30,9 @@ public class MarketTest {
         listElectricityBlocks = new ArrayList<>();
         listElectricityBlocks.add(electricityBlock);
         electricityOffer = new ElectricityOffer(listElectricityBlocks);
-        market = new Market("Secondaire", electricityOffer);
+        listElectricityOffers = new ArrayList<>();
+        listElectricityOffers.add(electricityOffer);
+        market = new Market("Secondaire", listElectricityOffers);
     }
 
     @Test(expected = MarketAlreadyExistingException.class)
