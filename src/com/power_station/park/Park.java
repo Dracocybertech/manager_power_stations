@@ -2,6 +2,7 @@ package com.power_station.park;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ public class Park {
     private String type;
     private String name;
     private List<ElectricityBlock> electricityBlocks;
-    private static Map<String, Park> mapParks;
+    private static Map<String, Park> mapParks = new HashMap<>();
     private int totalHours = 0;
 
     /**
@@ -22,7 +23,7 @@ public class Park {
      * @param name
      */
     public Park(String type, String name) {
-        this(type, name, null);
+        this(type, name, new ArrayList<>());
     }
 
     /**
