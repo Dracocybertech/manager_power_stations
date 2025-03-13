@@ -75,6 +75,13 @@ public class Market {
     }
 
     /**
+     * Clear the map of all markets.
+     */
+    public static void clearMarkets() {
+        Market.mapMarkets.clear();
+    }
+
+    /**
      * Return the list of the parks which can produced electricity for this market.
      * Return an empty list if there isn't any park or if there isn't any
      * configuration of parks to supply the market.
