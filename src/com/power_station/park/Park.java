@@ -58,6 +58,8 @@ public class Park {
             } else {
                 electricityBlocksParks.get(block.getEnergy()).add(block);
             }
+            // The block is now linked to this park
+            block.setPark(this);
         }
         mapParks.put(name, this);
     }
