@@ -1,23 +1,26 @@
 package com.power_station.offer;
 
+import com.power_station.park.Park;
+
 public class ElectricityBlock {
 
     private int energy;
     private int hours;
     private int price;
     private int id;
+    private Park park;
     private static int idCounter = 0;
 
     /**
      * Create a electricity block with its period of activity between 1 and 24
-     * hours, the energy it
-     * produces and its price.
+     * hours, the energy it produces, its price and the park it belongs.
      * 
      * @param energy
      * @param price
      * @param hours
+     * @param park
      */
-    public ElectricityBlock(int energy, int price, int hours) {
+    public ElectricityBlock(int energy, int price, int hours, Park park) {
         if (energy < 0) {
             throw new NegativeEnergyException("Energy can't be negative.");
         }
@@ -30,8 +33,21 @@ public class ElectricityBlock {
         this.energy = energy;
         this.price = price;
         this.hours = hours;
+        this.park = park;
         this.id = idCounter + 1;
         idCounter += 1;
+    }
+
+    /**
+     * Create a electricity block with its period of activity between 1 and 24
+     * hours, the energy it produces and its price.
+     * 
+     * @param energy
+     * @param price
+     * @param hours
+     */
+    public ElectricityBlock(int energy, int price, int hours) {
+        this(energy, price, hours, null);
     }
 
     public int getEnergy() {
@@ -50,6 +66,10 @@ public class ElectricityBlock {
         return this.id;
     }
 
+    public Park getPark() {
+        return this.park;
+    }
+
     public void setEnergy(int energy) {
         if (energy < 0) {
             throw new NegativeEnergyException("Energy can't be negative.");
@@ -62,6 +82,15 @@ public class ElectricityBlock {
             throw new NegativePriceException("Price can't be negative.");
         }
         this.price = price;
+    }
+
+    /**
+     * Set the park to which the electricity block belongs.
+     * 
+     * @param park
+     */
+    public void setPark(Park park) {
+        this.park = park;
     }
 
     /**
