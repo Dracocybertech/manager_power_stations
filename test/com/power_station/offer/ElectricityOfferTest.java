@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.power_station.offer.ElectricityBlock;
 import com.power_station.offer.ElectricityOffer;
+import com.power_station.offer.TooManyHoursException;
 
 public class ElectricityOfferTest {
     private ElectricityOffer electricityOfferEmpty;
@@ -33,5 +34,26 @@ public class ElectricityOfferTest {
         ArrayList<ElectricityBlock> expectedInitList = new ArrayList<>(listElectricityBlocks);
         Assert.assertEquals(expectedEmptyList, electricityOfferEmpty.getElectricityBlocks());
         Assert.assertEquals(expectedInitList, electricityOffer.getElectricityBlocks());
+    }
+
+    @Test
+    public void addBlockTest() {
+        ArrayList<ElectricityBlock> expectedListElectricityBlocks = new ArrayList<>(
+                electricityOffer.getElectricityBlocks());
+        ElectricityBlock addedElectricityBlock = new ElectricityBlock(1, 1, 1);
+        expectedListElectricityBlocks.add(addedElectricityBlock);
+        electricityOffer.addBlock(addedElectricityBlock);
+        Assert.assertEquals(expectedListElectricityBlocks, electricityOffer.getElectricityBlocks());
+
+    }
+
+    @Test(expected = TooManyHoursException.class)
+    public void addBlockTooManyHoursExceptionTest() {
+        // Check if the list is not empty so there is at least one electricity block
+        Assert.assertFalse(electricityOffer.getElectricityBlocks().isEmpty());
+        // Adding a block with 24 hours will trigger the exception since we can't add
+        // block with more than 24 hours in total
+        ElectricityBlock unvalidElectricityBlock = new ElectricityBlock(1, 1, 24);
+        electricityOffer.addBlock(unvalidElectricityBlock);
     }
 }
