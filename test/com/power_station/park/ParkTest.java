@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.power_station.offer.ElectricityBlock;
 import com.power_station.park.Park;
+import com.power_station.park.ParkAlreadyExistingException;
 
 public class ParkTest {
 
@@ -28,6 +29,11 @@ public class ParkTest {
         listElectricityBlocks = new ArrayList<>();
         listElectricityBlocks.add(electricityBlock);
         park = new Park(type, "Park 1", listElectricityBlocks);
+    }
+
+    @Test(expected = ParkAlreadyExistingException.class)
+    public void parkAlreadyExistingExceptionTest() {
+        new Park(park.getType(), park.getName(), park.getElectricityBlocks());
     }
 
     @Test
