@@ -1,6 +1,8 @@
 package test.com.power_station.park;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -86,5 +88,33 @@ public class ParkTest {
         // Blocks with different hours so one can supply the other but not the opposite
         Assert.assertFalse(electricityBlockSuppliedLessHours.supplyElectricityBlock(electricityBlock));
         Assert.assertTrue(electricityBlock.supplyElectricityBlock(electricityBlockSuppliedLessHours));
+    }
+
+    @Test
+    public void getElectricityBlocksParksTest() {
+        ElectricityBlock electricityBlock1 = new ElectricityBlock(20, 10, 1);
+        ElectricityBlock electricityBlock2 = new ElectricityBlock(30, 10, 1);
+        ElectricityBlock electricityBlock3 = new ElectricityBlock(30, 20, 5);
+        listElectricityBlocks = new ArrayList<>();
+        listElectricityBlocks.add(electricityBlock1);
+        listElectricityBlocks.add(electricityBlock2);
+        listElectricityBlocks.add(electricityBlock3);
+        new Park("Eolien", "Park Electricity Blocks Parks Test", listElectricityBlocks);
+        Map<Integer, List<ElectricityBlock>> electricityBlocksParks = Park.getElectricityBlocksParks();
+        
+        //Check if the map now has the energy value as key
+        Assert.assertTrue(electricityBlocksParks.containsKey(20));
+        Assert.assertTrue(electricityBlocksParks.containsKey(30));
+
+        //Check if the array for a specific energy has the electricity block
+        ArrayList<ElectricityBlock> energy20List = new ArrayList<>(electricityBlocksParks.get(20));
+        Assert.assertTrue(energy20List.contains(electricityBlock1));
+        Assert.assertFalse(energy20List.contains(electricityBlock2));
+        Assert.assertFalse(energy20List.contains(electricityBlock3));
+
+        ArrayList<ElectricityBlock> energy30List = new ArrayList<>(electricityBlocksParks.get(30));
+        Assert.assertTrue(energy30List.contains(electricityBlock2));
+        Assert.assertTrue(energy30List.contains(electricityBlock3));
+        Assert.assertFalse(energy30List.contains(electricityBlock1));
     }
 }
