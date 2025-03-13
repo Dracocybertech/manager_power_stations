@@ -70,7 +70,7 @@ public class Market {
      * 
      * @return
      */
-    public Collection<Market> getMarkets() {
+    public static Collection<Market> getMarkets() {
         return Market.mapMarkets.values();
     }
 
