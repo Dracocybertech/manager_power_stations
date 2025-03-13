@@ -2,6 +2,7 @@ package test.com.power_station.market;
 
 import java.util.ArrayList;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,8 +32,19 @@ public class MarketTest {
         market = new Market("Secondaire", electricityOffer);
     }
 
-    @Test(expected=MarketAlreadyExistingException.class)
+    @Test(expected = MarketAlreadyExistingException.class)
     public void marketAlreadyExistingExceptionTest() {
         new Market(market.getName());
+    }
+
+    @Test
+    public void getMarketsTest() {
+        ArrayList<Market> listmarkets = new ArrayList<>();
+        listmarkets.addAll(Market.getMarkets());
+        Assert.assertTrue(listmarkets.contains(emptyMarket));
+        Assert.assertTrue(listmarkets.contains(market));
+        Market newMarket = new Market("New Market");
+        listmarkets.addAll(Market.getMarkets());
+        Assert.assertTrue(listmarkets.contains(newMarket));
     }
 }
