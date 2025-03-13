@@ -57,6 +57,15 @@ public class Market {
     }
 
     /**
+     * Return the name of the market.
+     * 
+     * @return the name of the market
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
      * Return a Collection of the markets.
      * 
      * @return
@@ -93,7 +102,7 @@ public class Market {
                 if (listParkBlock.isEmpty()) {
                     return new ArrayList<>();
                 }
-                //Add the parks to the result lists
+                // Add the parks to the result lists
                 listParksResult.addAll(listParkBlock);
             }
         }
