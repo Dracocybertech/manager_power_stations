@@ -20,7 +20,7 @@ public class ParkTest {
     @Before
     public void beforeTest() {
         System.out.println("Park test starting");
-        String type = "Primaire";
+        String type = "Solaire";
         emptyPark = new Park(type, "Empty Park");
         int energy = 10;
         int price = 20;
@@ -42,7 +42,7 @@ public class ParkTest {
         listparks.addAll(Park.getParks());
         Assert.assertTrue(listparks.contains(park));
         Assert.assertTrue(listparks.contains(emptyPark));
-        Park newPark = new Park("Primaire", "New Park");
+        Park newPark = new Park("Eolien", "New Park");
         listparks.addAll(Park.getParks());
         Assert.assertTrue(listparks.contains(newPark));
     }
