@@ -13,7 +13,7 @@ import com.power_station.offer.TooManyHoursException;
 public class ElectricityOfferTest {
     private ElectricityOffer electricityOfferEmpty;
     private ElectricityOffer electricityOffer;
-    ArrayList<ElectricityBlock> listElectricityBlocks;
+    private ArrayList<ElectricityBlock> listElectricityBlocks;
 
     @Before
     public void beforeTest() {
