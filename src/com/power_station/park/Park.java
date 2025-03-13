@@ -85,6 +85,13 @@ public class Park {
     }
 
     /**
+     * Remove all parks created.
+     */
+    public void clearParks() {
+        Park.mapParks.clear();
+    }
+
+    /**
      * Return true if at least one block in the park can supply a given block.
      * 
      * @param blockToSupply
