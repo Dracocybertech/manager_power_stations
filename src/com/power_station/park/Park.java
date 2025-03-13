@@ -15,6 +15,7 @@ public class Park {
     private List<ElectricityBlock> electricityBlocks;
     private static Map<String, Park> mapParks = new HashMap<>();
     private int totalHours = 0;
+    private static Map<Integer, List<ElectricityBlock>> electricityBlocksParks = new HashMap<>();
 
     /**
      * Create Park with empty production blocks.
@@ -45,6 +46,19 @@ public class Park {
         this.name = name;
         this.type = type;
         this.electricityBlocks = new ArrayList<>(electricityBlocks);
+
+        // Add the block to the right energy list of electricity block
+        for (ElectricityBlock block : this.electricityBlocks) {
+            // If there isn't any block with the same energy already existing in any offer
+            // we create the array for this energy
+            if (!electricityBlocksParks.containsKey(block.getEnergy())) {
+                ArrayList<ElectricityBlock> listElectricityBlocks = new ArrayList<>();
+                listElectricityBlocks.add(block);
+                electricityBlocksParks.put(block.getEnergy(), listElectricityBlocks);
+            } else {
+                electricityBlocksParks.get(block.getEnergy()).add(block);
+            }
+        }
         mapParks.put(name, this);
     }
 
@@ -85,10 +99,25 @@ public class Park {
     }
 
     /**
+     * Return all electricity blocks for every park existing, classified by energy.
+     * @return
+     */
+    public Map<Integer, List<ElectricityBlock>> getElectricityBlocksParks() {
+        return electricityBlocksParks;
+    }
+
+    /**
      * Remove all parks created.
      */
     public static void clearParks() {
         Park.mapParks.clear();
+    }
+
+    /**
+     * Remove all electricity blocks from the general map.
+     */
+    public static void clearElectricityBlocksParks() {
+        electricityBlocksParks.clear();
     }
 
     /**
