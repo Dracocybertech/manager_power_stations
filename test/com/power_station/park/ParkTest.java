@@ -2,6 +2,7 @@ package test.com.power_station.park;
 
 import java.util.ArrayList;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,6 +30,11 @@ public class ParkTest {
         listElectricityBlocks = new ArrayList<>();
         listElectricityBlocks.add(electricityBlock);
         park = new Park(type, "Park 1", listElectricityBlocks);
+    }
+
+    @After
+    public void afterTest() {
+        Park.clearParks();
     }
 
     @Test(expected = ParkAlreadyExistingException.class)
