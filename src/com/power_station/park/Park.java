@@ -100,9 +100,10 @@ public class Park {
 
     /**
      * Return all electricity blocks for every park existing, classified by energy.
+     * 
      * @return
      */
-    public Map<Integer, List<ElectricityBlock>> getElectricityBlocksParks() {
+    public static Map<Integer, List<ElectricityBlock>> getElectricityBlocksParks() {
         return electricityBlocksParks;
     }
 
