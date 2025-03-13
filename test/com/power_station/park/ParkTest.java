@@ -38,4 +38,14 @@ public class ParkTest {
         listparks.addAll(Park.getParks());
         Assert.assertTrue(listparks.contains(newPark));
     }
+
+    @Test
+    public void getElectricityBlocks() {
+        // Case of a park with no electricity blocks
+        ArrayList<ElectricityBlock> emptyList = new ArrayList<>();
+        Assert.assertEquals(emptyList, emptyPark.getElectricityBlocks());
+
+        // Case of a park initialized with a list
+        Assert.assertEquals(listElectricityBlocks, park.getElectricityBlocks());
+    }
 }
