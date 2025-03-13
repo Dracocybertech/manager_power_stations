@@ -3,8 +3,10 @@ package test.com.power_station.market;
 import java.util.ArrayList;
 
 import org.junit.Before;
+import org.junit.Test;
 
 import com.power_station.market.Market;
+import com.power_station.market.MarketAlreadyExistingException;
 import com.power_station.offer.ElectricityBlock;
 import com.power_station.offer.ElectricityOffer;
 
@@ -27,5 +29,10 @@ public class MarketTest {
         listElectricityBlocks.add(electricityBlock);
         electricityOffer = new ElectricityOffer(listElectricityBlocks);
         market = new Market("Secondaire", electricityOffer);
+    }
+
+    @Test(expected=MarketAlreadyExistingException.class)
+    public void marketAlreadyExistingExceptionTest() {
+        new Market(market.getName());
     }
 }
