@@ -86,4 +86,13 @@ public class ElectricityOffer {
         ElectricityBlock removedBlock = this.electricityBlocks.remove(indexBlock);
         totalHours -= removedBlock.getHours();
     }
+
+    /**
+     * Return the number of electricity blocks the offer has.
+     * 
+     * @return the number of electricity blocks
+     */
+    public int getNumberBlocks() {
+        return this.electricityBlocks.size();
+    }
 }
