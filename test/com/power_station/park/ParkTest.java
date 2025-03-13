@@ -14,6 +14,7 @@ public class ParkTest {
     private Park emptyPark;
     private Park park;
     private ArrayList<ElectricityBlock> listElectricityBlocks;
+    private ElectricityBlock electricityBlock;
 
     @Before
     public void beforeTest() {
@@ -22,7 +23,7 @@ public class ParkTest {
         int energy = 10;
         int price = 20;
         int hours = 3;
-        ElectricityBlock electricityBlock = new ElectricityBlock(energy, price, hours);
+        electricityBlock = new ElectricityBlock(energy, price, hours);
         listElectricityBlocks = new ArrayList<>();
         listElectricityBlocks.add(electricityBlock);
         park = new Park("Primaire", "Park 1", listElectricityBlocks);
@@ -47,5 +48,30 @@ public class ParkTest {
 
         // Case of a park initialized with a list
         Assert.assertEquals(listElectricityBlocks, park.getElectricityBlocks());
+    }
+
+    @Test
+    public void supplyElectricityBlockTest() {
+        // Same block
+        Assert.assertTrue(electricityBlock.supplyElectricityBlock(electricityBlock));
+
+        int energy = electricityBlock.getEnergy();
+        int price = electricityBlock.getPrice();
+        int hours = electricityBlock.getHours();
+        ElectricityBlock electricityBlockSupplied = new ElectricityBlock(energy, price, hours);
+
+        // Different blocks with the same settings
+        Assert.assertTrue(electricityBlock.supplyElectricityBlock(electricityBlockSupplied));
+        Assert.assertTrue(electricityBlockSupplied.supplyElectricityBlock(electricityBlock));
+
+        ElectricityBlock electricityBlockNotSupplied = new ElectricityBlock(energy + 10, price, hours);
+        // Blocks that can't supply each other because of energy difference
+        Assert.assertFalse(electricityBlock.supplyElectricityBlock(electricityBlockNotSupplied));
+        Assert.assertFalse(electricityBlockNotSupplied.supplyElectricityBlock(electricityBlock));
+
+        ElectricityBlock electricityBlockSuppliedLessHours = new ElectricityBlock(energy, price, 1);
+        // Blocks with different hours so one can supply the other but not the opposite
+        Assert.assertFalse(electricityBlockSuppliedLessHours.supplyElectricityBlock(electricityBlock));
+        Assert.assertTrue(electricityBlock.supplyElectricityBlock(electricityBlockSuppliedLessHours));
     }
 }
