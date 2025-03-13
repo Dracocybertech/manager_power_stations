@@ -56,4 +56,20 @@ public class ElectricityOfferTest {
         ElectricityBlock unvalidElectricityBlock = new ElectricityBlock(1, 1, 24);
         electricityOffer.addBlock(unvalidElectricityBlock);
     }
+
+    @Test
+    public void removeBlockTest() {
+        // Removed a known ElectricityBlock
+        ArrayList<ElectricityBlock> expectedListElectricityBlocks = new ArrayList<>(
+                electricityOffer.getElectricityBlocks());
+        ElectricityBlock electricityBlockToBeRemoved = new ElectricityBlock(1, 1, 1);
+        electricityOffer.addBlock(electricityBlockToBeRemoved);
+        electricityOffer.removeBlock(electricityBlockToBeRemoved);
+        Assert.assertEquals(expectedListElectricityBlocks, electricityOffer.getElectricityBlocks());
+
+        // Remove a block from its index
+        electricityOffer.addBlock(electricityBlockToBeRemoved);
+        electricityOffer.removeBlock(electricityOffer.getNumberBlocks() - 1);
+        Assert.assertEquals(expectedListElectricityBlocks, electricityOffer.getElectricityBlocks());
+    }
 }
